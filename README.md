@@ -94,7 +94,7 @@ Uzantı veriyi ağdan çekmez. Konu/etiket kayıtlarını paketlenmiş `db.json`
 ## Geliştirme
 
 <p align="center">
-  <img src="assets/readme/bolum-gelistirme.svg" width="100%" alt="03 — Geliştirme: iki parça, tek depo. Testler, tip denetimi ve derleme; terminalde npm run build.">
+  <img src="assets/readme/bolum-gelistirme.svg" width="100%" alt="03 — Geliştirme: iki depo, tek veri sözleşmesi. Uzantı testleri ve derlemesi; site ayrı depoda; terminalde npm run build.">
 </p>
 
 Uzantı kaynağı `src/` altındadır; site kaynağı ayrı depoda (`SITE_REPO_URL`) tutulur. `chromium/` ve `firefox/` derleme çıktısıdır; doğrudan düzenlenmez.
