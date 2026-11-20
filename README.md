@@ -6,10 +6,7 @@
 
 **YouTube'un gürültüsünü topluluk verisiyle süz.** Konu ve etiket tabanlı filtreler Chromium ve Firefox'ta yerel çalışır. Veriyi YouTube Filter Store'daki anonim oylar üretir; uzantı filtre kararı için ağdan veri çekmez.
 
-<p align="center">
-  <img src="docs/gorseller/site-ana-sayfa.png" alt="YouTube Filter Store ana sayfası: topluluk kütüphanesi, YouTube linki inceleme alanı ve son eklenen içerik" width="100%">
-</p>
-<p align="center"><sub>YouTube Filter Store — yerel demo verisiyle alınmış ana sayfa görüntüsü.</sub></p>
+> **Site deposu:** YouTube Filter Store artık ayrı bir depoda tutulur: `SITE_REPO_URL`.
 
 <p align="center">
   <sub><a href="../../releases">Sürüm notları ve paketler →</a></sub>
@@ -54,16 +51,7 @@ Chromium ve Firefox için aynı kaynaktan üretilir. Filtre kararı tarayıcıda
 
 ## Site
 
-<p align="center">
-  <img src="assets/readme/bolum-site.svg" width="100%" alt="02 — Site: anonim oylar, editör moderasyonu ve sürümlü db.json. Sağda oy sayacı ve veri dosyası.">
-</p>
-
-YouTube Filter Store, uzantının kullandığı veriyi üreten Next.js uygulamasıdır. Ziyaretçi hesap açmadan oy verir; editörler kayıt ve moderasyon yapar; adminler yayını yönetir.
-
-<p align="center">
-  <img src="docs/gorseller/site-icerik-oylama.png" alt="Video oylama sayfası: konu ve etiket oyları ile topluluk sonucu" width="100%">
-</p>
-<p align="center"><sub>Video oylama sayfası — yerel demo verisi; konu/etiket oyları, 3 oy eşiği ve sonuç paneli.</sub></p>
+YouTube Filter Store, uzantının kullandığı veriyi üreten Next.js uygulamasıdır. Ziyaretçi hesap açmadan oy verir; editörler kayıt ve moderasyon yapar; adminler yayını yönetir. Site artık ayrı bir depoda tutulur: `SITE_REPO_URL`.
 
 ### Öne çıkanlar
 
@@ -91,7 +79,7 @@ Uzantı veriyi ağdan çekmez. Konu/etiket kayıtlarını paketlenmiş `db.json`
 
 ## Mimari
 
-Tek depo iki çalışma alanı barındırır: kararı tarayıcıda veren uzantı ve veriyi üreten Next.js sitesi. İki taraf yalnızca sürümlü `db.json` sözleşmesinde buluşur; ham oylar ve moderasyon kayıtları sitede kalır.
+İki ayrı depo iki çalışma alanı barındırır: kararı tarayıcıda veren uzantı ve veriyi üreten Next.js sitesi (`SITE_REPO_URL`). İki taraf yalnızca sürümlü `db.json` sözleşmesinde buluşur; ham oylar ve moderasyon kayıtları sitede kalır.
 
 <p align="center">
   <img src="assets/readme/mimari.svg" width="100%" alt="Mimari: tarayıcıdaki uzantı YouTube DOM'undan karar üretir ve yalnızca yerel depoyu kullanır; Next.js sitesi anonim oyları PostgreSQL'de toplar, moderasyondan geçirir ve sürümlü db.json yayımlar. Uzantı bu dosyayı paketli veya içe aktarılmış kopya olarak okur.">
@@ -109,9 +97,9 @@ Tek depo iki çalışma alanı barındırır: kararı tarayıcıda veren uzantı
   <img src="assets/readme/bolum-gelistirme.svg" width="100%" alt="03 — Geliştirme: iki parça, tek depo. Testler, tip denetimi ve derleme; terminalde npm run build.">
 </p>
 
-Uzantı kaynağı `src/`, site kaynağı `site/` altındadır. `chromium/` ve `firefox/` derleme çıktısıdır; doğrudan düzenlenmez.
+Uzantı kaynağı `src/` altındadır; site kaynağı ayrı depoda (`SITE_REPO_URL`) tutulur. `chromium/` ve `firefox/` derleme çıktısıdır; doğrudan düzenlenmez.
 
-Gereksinimler: **Node.js 20+** (uzantı), **Node.js 22.18+** (site; `.nvmrc` 22.23.4).
+Gereksinim: **Node.js 20+**. Site kurulumu ve komutları için `SITE_REPO_URL` deposuna bakın.
 
 ```bash
 # Uzantı
@@ -119,15 +107,6 @@ npm install
 npm run build
 npm test
 npm run build:check
-
-# Site
-cd site
-npm install
-Copy-Item .env.example .env
-npm run dev
-npm test
-npm run tip
-npm run build
 ```
 
 ## Proje yapısı
@@ -139,8 +118,7 @@ scripts/              Derleme, ikon ve paketleme betikleri
 tests/                Node testleri + tests/smoke/ (jsdom)
 chromium/             Derlenmiş Chromium uzantısı
 firefox/              Derlenmiş Firefox uzantısı
-site/                 Next.js + TypeScript + PostgreSQL site uygulaması
-docs/                 Ürün kuralları, şemalar, QA ve gizlilik belgeleri
+docs/                 Eklenti kuralları, şemalar ve gizlilik belgeleri
 docs/gorseller/       README ekran görüntüleri
 assets/readme/        README hero, bölüm şeritleri ve mimari SVG'leri
 ```
@@ -149,12 +127,8 @@ assets/readme/        README hero, bölüm şeritleri ve mimari SVG'leri
 
 | Belge | Kapsam |
 |---|---|
-| [`docs/SISTEM_TASARIMI.md`](docs/SISTEM_TASARIMI.md) | Ürün kurallarının tek kaynağı |
-| [`docs/db-sema.md`](docs/db-sema.md) | `db.json` sözleşmesi ve sürüm kuralları |
-| [`docs/SITE_HAZIRLIK.md`](docs/SITE_HAZIRLIK.md) | Site rolleri ve ürün kararları |
-| [`site/README.md`](site/README.md) | Site kurulumu, komutları ve mimarisi |
-| [`docs/SUNUCU_KURULUM.md`](docs/SUNUCU_KURULUM.md) | Docker Compose ile sunucu kurulumu |
-| [`docs/SITE_QA.md`](docs/SITE_QA.md) | Elle QA ve kabul listesi |
+| [`docs/SISTEM_TASARIMI.md`](docs/SISTEM_TASARIMI.md) | Eklenti kuralları (site bölümleri site deposunda) |
+| [Site deposu](SITE_REPO_URL) | `db.json` sözleşmesi, site kurulumu, rolleri, QA ve sunucu kurulumu |
 | [`docs/GIZLILIK.md`](docs/GIZLILIK.md) | Uzantı gizlilik politikası |
 | [`CHANGELOG.md`](CHANGELOG.md) | Değişiklik geçmişi |
 
@@ -173,5 +147,5 @@ Son sürüm **2.1.0**. Paketler ve sürüm notları: [GitHub Releases](../../rel
 ## Notlar
 
 - Paketli `src/data/db.json` şu an örnek düzeyinde; yaygın YouTube içerikleri "bilinmeyen" olarak değerlendirilir. Kapsam, site yayını ve topluluk oylarıyla büyür.
-- Gerçek YouTube üzerinde uçtan uca tarayıcı/ekran okuyucu QA'sı ve Docker/PostgreSQL/Caddy üretim denemesi bu makinede yapılmadı.
+- Gerçek YouTube üzerinde uçtan uca tarayıcı/ekran okuyucu QA'sı ve site deposundaki Docker/PostgreSQL/Caddy üretim denemesi bu makinede yapılmadı.
 - Site içi "Bildir" formu yoktur; iletişim [GitHub Issues](../../issues) üzerindendir.
