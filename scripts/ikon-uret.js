@@ -6,10 +6,6 @@
  * Bağımlılık yoktur: 4x süper örnekleme ile "Sinyal Kalkanı" işaretini çizip
  * PNG olarak yazar:
  *   src/icons/icon{16,32,48,128}.png   (manifest ikonları, tam taşlı)
- *   site/public/ikon{16,32,48,128}.png (site favicon'ları)
- *   site/app/icon.png                  (32 px Next.js ikonu)
- *   site/app/apple-icon.png            (180 px Apple dokunma ikonu)
- *   site/public/kalkan.svg             (aynı geometrinin SVG kaynağı)
  *
  * Tasarım dili: iki beyaz çeyrekli, ince koyu kenarlı kırmızı kalkan; zemin
  * tamamen saydamdır. 16 px'te kenar ve çeyrekler okunur kalacak biçimde
@@ -27,19 +23,10 @@ const CIKTI_DIR = path.join(KOK, 'src', 'icons');
 const BOYUTLAR = [16, 32, 48, 128];
 const ORNEKLEME = 4;
 
-const SITE_DIR = path.join(KOK, 'site');
-const SITE_PUBLIC = path.join(SITE_DIR, 'public');
-const SITE_APP = path.join(SITE_DIR, 'app');
-
 // S1 paleti: gövde sinyal kırmızısı, kenar koyu sinyal, çeyrekler sıcak beyaz.
 const RENK_GOVDE = [201, 52, 43];    // #C9342B
 const RENK_KENAR = [152, 37, 31];    // #98251F
 const RENK_CEYREK = [255, 253, 248]; // #FFFDF8
-
-const GOVDE_D =
-    'M64 6C84 14 104 19 120 22V58C120 91 99 112 64 124C29 112 8 91 8 58V22C24 19 44 14 64 6Z';
-const SOL_UST_D = 'M8 22C24 19 44 14 64 6V64H8V22Z';
-const SAG_ALT_D = 'M64 64H120V58C120 91 99 112 64 124V64Z';
 
 // ---------- geometri yardımcıları ----------
 
@@ -302,37 +289,7 @@ function pngYaz(dosya, boyut) {
     console.log(`✓ ${path.relative(KOK, dosya)} (${boyut}x${boyut})`);
 }
 
-function svgYaz(dosya) {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="YouTube Filter Store kalkanı" shape-rendering="geometricPrecision">
-  <title>YouTube Filter Store</title>
-  <defs>
-    <clipPath id="kalkan-govde">
-      <path d="${GOVDE_D}" />
-    </clipPath>
-  </defs>
-  <path d="${GOVDE_D}" fill="#C9342B" />
-  <g clip-path="url(#kalkan-govde)">
-    <path d="${SOL_UST_D}" fill="#FFFDF8" />
-    <path d="${SAG_ALT_D}" fill="#FFFDF8" />
-  </g>
-  <path d="${GOVDE_D}" fill="none" stroke="#98251F" stroke-width="5" stroke-linejoin="round" />
-</svg>
-`;
-    fs.mkdirSync(path.dirname(dosya), { recursive: true });
-    fs.writeFileSync(dosya, svg);
-    console.log(`✓ ${path.relative(KOK, dosya)}`);
-}
-
 fs.mkdirSync(CIKTI_DIR, { recursive: true });
 for (const boyut of BOYUTLAR) {
     pngYaz(path.join(CIKTI_DIR, `icon${boyut}.png`), boyut);
 }
-
-// Uzantı ikonlarıyla aynı tam taşlı işaret site favicon'larında da kullanılır.
-for (const boyut of BOYUTLAR) {
-    pngYaz(path.join(SITE_PUBLIC, `ikon${boyut}.png`), boyut);
-}
-
-pngYaz(path.join(SITE_APP, 'icon.png'), 32);
-pngYaz(path.join(SITE_APP, 'apple-icon.png'), 180);
-svgYaz(path.join(SITE_PUBLIC, 'kalkan.svg'));

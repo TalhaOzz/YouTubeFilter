@@ -1,6 +1,6 @@
 /**
  * YouTube Filtreleyici - Veritabanı yükleyici / indeksleyici.
- * db.json sözleşmesi için docs/db-sema.md dosyasına bakın.
+ * db.json sözleşmesi için site deposundaki docs/db-sema.md dosyasına bakın.
  * Saf fonksiyon: dosya okumaz, ağ kullanmaz; JSON nesnesini alır, arama fonksiyonları döndürür.
  */
 (function (root, factory) {
