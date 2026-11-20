@@ -3,11 +3,11 @@
 > **Kaynak:** Ekip liderinin tasarım dökümanı (2026-10-18, el yazısı notlar + metin). Bu dosya onun düzenlenmiş hâlidir; **1–4. bölümler liderin kurallarıdır, değiştirilmez.** (2026-10-22: bu bölümlere yalnızca açıklayıcı *Not* satırları eklendi, metin değiştirilmedi.)
 > **6. bölüm** uygulama sırasında belirsiz kalan noktaların nasıl yorumlandığını ve hangilerinin liderden teyit beklediğini listeler.
 > **5 ve 7. bölümler** YouTube Filter Store'un topluluk oylama, rol, anonim oy ve moderasyon kurallarını tanımlar; site deposunda tutulur.
-> Kodda karşılığı: `src/core/decision.js` (algoritma), `src/core/taxonomy.js` (ayar şeması), `src/core/engine.js` (eylem çözümleme), `SITE_REPO_URL/docs/db-sema.md` (veri sözleşmesi).
+> Kodda karşılığı: `src/core/decision.js` (algoritma), `src/core/taxonomy.js` (ayar şeması), `src/core/engine.js` (eylem çözümleme), `https://github.com/servi-team/yt-filter-store/blob/main/docs/db-sema.md` (veri sözleşmesi).
 
-Bu belge, YouTube Filtre eklentisinin çalışma algoritmasını, filtreleme modlarını ve kullanıcı ayarlarını tanımlar; siteyle ortak veri sözleşmesine `SITE_REPO_URL/docs/db-sema.md` üzerinden bağlanır.
+Bu belge, YouTube Filtre eklentisinin çalışma algoritmasını, filtreleme modlarını ve kullanıcı ayarlarını tanımlar; siteyle ortak veri sözleşmesine `https://github.com/servi-team/yt-filter-store/blob/main/docs/db-sema.md` üzerinden bağlanır.
 
-> **Site bölümleri:** 5 ve 7. bölümler site deposuna taşındı: `SITE_REPO_URL/docs/SISTEM_TASARIMI.md`. Bu dosya yalnızca eklenti kurallarını (1–4 ve 6) içerir.
+> **Site bölümleri:** 5 ve 7. bölümler site deposuna taşındı: `https://github.com/servi-team/yt-filter-store/blob/main/docs/SISTEM_TASARIMI.md`. Bu dosya yalnızca eklenti kurallarını (1–4 ve 6) içerir.
 
 ---
 

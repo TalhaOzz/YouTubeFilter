@@ -6,7 +6,7 @@
 
 **YouTube'un gürültüsünü topluluk verisiyle süz.** Konu ve etiket tabanlı filtreler Chromium ve Firefox'ta yerel çalışır. Veriyi YouTube Filter Store'daki anonim oylar üretir; uzantı filtre kararı için ağdan veri çekmez.
 
-> **Site deposu:** YouTube Filter Store artık ayrı bir depoda tutulur: `SITE_REPO_URL`.
+> **Site deposu:** YouTube Filter Store artık ayrı bir depoda tutulur: `https://github.com/servi-team/yt-filter-store`.
 
 <p align="center">
   <sub><a href="../../releases">Sürüm notları ve paketler →</a></sub>
@@ -51,7 +51,7 @@ Chromium ve Firefox için aynı kaynaktan üretilir. Filtre kararı tarayıcıda
 
 ## Site
 
-YouTube Filter Store, uzantının kullandığı veriyi üreten Next.js uygulamasıdır. Ziyaretçi hesap açmadan oy verir; editörler kayıt ve moderasyon yapar; adminler yayını yönetir. Site artık ayrı bir depoda tutulur: `SITE_REPO_URL`.
+YouTube Filter Store, uzantının kullandığı veriyi üreten Next.js uygulamasıdır. Ziyaretçi hesap açmadan oy verir; editörler kayıt ve moderasyon yapar; adminler yayını yönetir. Site artık ayrı bir depoda tutulur: `https://github.com/servi-team/yt-filter-store`.
 
 ### Öne çıkanlar
 
@@ -79,7 +79,7 @@ Uzantı veriyi ağdan çekmez. Konu/etiket kayıtlarını paketlenmiş `db.json`
 
 ## Mimari
 
-İki ayrı depo iki çalışma alanı barındırır: kararı tarayıcıda veren uzantı ve veriyi üreten Next.js sitesi (`SITE_REPO_URL`). İki taraf yalnızca sürümlü `db.json` sözleşmesinde buluşur; ham oylar ve moderasyon kayıtları sitede kalır.
+İki ayrı depo iki çalışma alanı barındırır: kararı tarayıcıda veren uzantı ve veriyi üreten Next.js sitesi (`https://github.com/servi-team/yt-filter-store`). İki taraf yalnızca sürümlü `db.json` sözleşmesinde buluşur; ham oylar ve moderasyon kayıtları sitede kalır.
 
 <p align="center">
   <img src="assets/readme/mimari.svg" width="100%" alt="Mimari: tarayıcıdaki uzantı YouTube DOM'undan karar üretir ve yalnızca yerel depoyu kullanır; Next.js sitesi anonim oyları PostgreSQL'de toplar, moderasyondan geçirir ve sürümlü db.json yayımlar. Uzantı bu dosyayı paketli veya içe aktarılmış kopya olarak okur.">
@@ -97,9 +97,9 @@ Uzantı veriyi ağdan çekmez. Konu/etiket kayıtlarını paketlenmiş `db.json`
   <img src="assets/readme/bolum-gelistirme.svg" width="100%" alt="03 — Geliştirme: iki depo, tek veri sözleşmesi. Uzantı testleri ve derlemesi; site ayrı depoda; terminalde npm run build.">
 </p>
 
-Uzantı kaynağı `src/` altındadır; site kaynağı ayrı depoda (`SITE_REPO_URL`) tutulur. `chromium/` ve `firefox/` derleme çıktısıdır; doğrudan düzenlenmez.
+Uzantı kaynağı `src/` altındadır; site kaynağı ayrı depoda (`https://github.com/servi-team/yt-filter-store`) tutulur. `chromium/` ve `firefox/` derleme çıktısıdır; doğrudan düzenlenmez.
 
-Gereksinim: **Node.js 20+**. Site kurulumu ve komutları için `SITE_REPO_URL` deposuna bakın.
+Gereksinim: **Node.js 20+**. Site kurulumu ve komutları için `https://github.com/servi-team/yt-filter-store` deposuna bakın.
 
 ```bash
 # Uzantı
@@ -128,7 +128,7 @@ assets/readme/        README hero, bölüm şeritleri ve mimari SVG'leri
 | Belge | Kapsam |
 |---|---|
 | [`docs/SISTEM_TASARIMI.md`](docs/SISTEM_TASARIMI.md) | Eklenti kuralları (site bölümleri site deposunda) |
-| [Site deposu](SITE_REPO_URL) | `db.json` sözleşmesi, site kurulumu, rolleri, QA ve sunucu kurulumu |
+| [Site deposu](https://github.com/servi-team/yt-filter-store) | `db.json` sözleşmesi, site kurulumu, rolleri, QA ve sunucu kurulumu |
 | [`docs/GIZLILIK.md`](docs/GIZLILIK.md) | Uzantı gizlilik politikası |
 | [`CHANGELOG.md`](CHANGELOG.md) | Değişiklik geçmişi |
 
